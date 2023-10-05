@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Board extends JPanel{
 
@@ -9,6 +10,16 @@ public class Board extends JPanel{
 
     int cols=8;
     int rows=8;
+
+    ArrayList<Piece> piecelist= new ArrayList<>();
+    public Board(){
+        this.setPreferredSize(new Dimension(cols*tilesize,rows*tilesize));
+        addPieces();
+    }
+
+    public void addPieces(){
+        piecelist.add((new Knight(this,1,0,false)));
+    }
 
     public Board(){
         this.setPreferredSize(new Dimension(cols * tilesize,rows * tilesize));
