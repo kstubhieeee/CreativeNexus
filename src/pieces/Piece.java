@@ -22,7 +22,8 @@ public class Piece {
       e.printStackTrace();
     }
   }
-
+protected int sheetScale = sheet.getWidth()/6;
+  
 Image sprite;
 
   Board board
