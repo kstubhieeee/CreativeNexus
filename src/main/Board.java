@@ -1,5 +1,8 @@
 package main;
 
+import pieces.Knight;
+import pieces.Piece;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,21 +14,17 @@ public class Board extends JPanel{
     int cols=8;
     int rows=8;
 
-    ArrayList<Piece> piecelist= new ArrayList<>();
+    ArrayList<Piece> pieceList= new ArrayList<>();
     public Board(){
         this.setPreferredSize(new Dimension(cols*tilesize,rows*tilesize));
         addPieces();
     }
 
     public void addPieces(){
-        piecelist.add((new Knight(this,1,0,false)));
+        pieceList.add((new Knight(this,1,0,false)));
     }
 
-    public Board(){
-        this.setPreferredSize(new Dimension(cols * tilesize,rows * tilesize));
-        this.setBackground(Color.green);
 
-    }
 
     public void paintComponent(Graphics g)
     {
@@ -37,6 +36,10 @@ public class Board extends JPanel{
                 g2d.setColor((c+r)%2==0? new Color(234, 183, 130):new Color(231, 144, 63));
                 g2d.fillRect(c*tilesize, r*tilesize,tilesize,tilesize);
             }
+
+        for (Piece piece: pieceList) {
+            piece.paint(g2d);
+        }
     }
 
 }
